@@ -74,7 +74,7 @@ class HomeScreen extends React.Component {
   };
 
   componentDidMount = () => {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get(apiWithPath('/posts'))
       .then(response => response.data)
       .then(data => {
         this.props.setPostData(data);
