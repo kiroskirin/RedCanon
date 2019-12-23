@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
 import {
   View,
   Button,
@@ -11,6 +9,9 @@ import {
   StyleSheet,
   TextInput
 } from 'react-native';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { apiWithPath } from '../config';
 
 class HomeScreen extends React.Component {
 
@@ -36,7 +37,7 @@ class HomeScreen extends React.Component {
       }
     ));
 
-    axios.get('https://jsonplaceholder.typicode.com/users/1')
+    axios.get(apiWithPath('/users/1'))
       .then(response => response.data)
       .then(data => {
         this.props.setUserData(data);
@@ -92,14 +93,15 @@ class HomeScreen extends React.Component {
         data={this.props.post.data}
         renderItem={({ item, index, separators }) => (
           <TouchableOpacity style={styles.item}
-            onPress={() => this._onListItemPress(item)}
-            onShowUnderlay={separators.highlight}
-            onHideUnderlay={separators.unhighlight}>
+          onPress={() => this._onListItemPress(item)}
+          onShowUnderlay={separators.highlight}
+          onHideUnderlay={separators.unhighlight}>
             <View>
               <Text>{item.title}</Text>
             </View>
           </TouchableOpacity>
         )}
+        keyExtractor={item => item.id.toString()}
       />
     }
 

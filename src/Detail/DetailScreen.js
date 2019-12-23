@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import axios from 'axios';
+import { apiWithPath } from '../config'
 
 class DetailScreen extends React.Component {
 
@@ -15,7 +16,7 @@ class DetailScreen extends React.Component {
     componentDidMount = () => {
         const postId = this.props.navigation.getParam('postId', null);
         if (postId != null) {
-            axios.get('https://jsonplaceholder.typicode.com/posts/' + postId)
+            axios.get(apiWithPath(`/posts/${postId}`))
                 .then(response => response.data)
                 .then(data => {
                     this.setState({ data: data });

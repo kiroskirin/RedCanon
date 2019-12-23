@@ -2,4 +2,8 @@
 Configuration file
  */
  
-export const API_ENDPOINT = "API_ENDPOINT"
+const API_ENDPOINT = "https://jsonplaceholder.typicode.com";
+
+export const apiWithPath = path => {
+    return `${API_ENDPOINT}${path}`
+}
