@@ -3,7 +3,7 @@ const initialState = {
   data: null
 }
 
-export default function user(state = initialState, action) {
+export default function postReducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_POST_DATA':
       return {

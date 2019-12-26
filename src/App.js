@@ -12,12 +12,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './Home/HomeScreen';
 import DetailScreen from './Detail/DetailScreen';
 
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import reducer from './reducer/index';
-
-const store = createStore(reducer);
-
 const MainNavigator = createStackNavigator(
   {
     Home: { screen: HomeScreen },
@@ -28,14 +22,6 @@ const MainNavigator = createStackNavigator(
   }
 );
 
-const Navigation = createAppContainer(MainNavigator);
+const App = createAppContainer(MainNavigator);
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
-    );
-  }
-}
+export default App;
